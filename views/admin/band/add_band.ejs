@@ -1,0 +1,61 @@
+<div class="left-arrow mb-3">
+    <a href="/admin/band"><i class="fas fa-arrow-left"></i></a>
+</div>
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/add-band" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name of Band :</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Name of Band" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City :</label>
+                <input type="text" class="form-control" name="city" placeholder="Enter City" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Intro Description :</label>
+                <textarea type="text" name="introduction" class="form-control" cols="30" rows="3" placeholder="Enter Intro Description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">First Description :</label>
+                <textarea type="text" name="firstDescription" class="form-control" cols="30" rows="10" placeholder="Enter First Description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Second Description :</label>
+                <textarea type="text" name="secondDescription" class="form-control" rows="10" placeholder="Enter Second Description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Twitter Link :</label>
+                <input type="text" class="form-control" name="twitterLink" placeholder="Enter Twitter Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Instagram Link :</label>
+                <input type="text" class="form-control" name="instagramLink" placeholder="Enter Instagram Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Facebook Link :</label>
+                <input type="text" class="form-control" name="facebookLink" placeholder="Enter Facebook Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Spotify Link :</label>
+                <input type="text" class="form-control" name="spotifyLink" placeholder="Enter Spotify Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Source Link :</label>
+                <input type="text" class="form-control" name="sourceLink" placeholder="Enter Source Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Cover Image :</label>
+                <input type="file" class="form-control" name="image" required>
+                <small class="float-right">*Only can upload one image for cover</small>
+            </div>
+            <div class="form-group">
+                <label for="name">Gallery :</label>
+                <input type="file" class="form-control" name="images" multiple>
+            </div>
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="tab-pane fade show active" id="landing-page-form" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+      <form action="/admin/configuration?_method=PUT" method="POST">
+          <div class="row g-3 align-items-center mb-3">
+            <div class="col-2">
+              <label for="navbarName" class="col-form-label">Navbar Name</label>
+            </div>
+            <span>:</span>
+            <div class="col-6">
+              <input type="text" id="navbarName" class="form-control hero-1" name="navbarName" value="<%= configuration.navbarName %>" aria-describedby="passwordHelpInline">
+            </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="heroTitleFirst" class="col-form-label">Title 1</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="heroTitleFirst" class="form-control hero-1" name="heroTitleFirst" value="<%= configuration.heroTitleFirst %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="heroTitleSecond" class="col-form-label">Title 2</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="heroTitleSecond" class="form-control hero-2" name="heroTitleSecond" value="<%= configuration.heroTitleSecond %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 mb-3">
+              <div class="col-2">
+                <label for="heroDescription" class="col-form-label">Description</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <textarea class="form-control hero-description" name="heroDescription" id="heroDescription" cols="30" rows="10"><%= configuration.heroDescription %></textarea>
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="email" class="col-form-label">Email</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="email" id="email" class="form-control email" name="email" value="<%= configuration.email %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="twitterLink" class="col-form-label">Twitter Link</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="twitterLink" class="form-control twitter-link" name="twitterLink" value="<%= configuration.twitterLink %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="instagramLink" class="col-form-label">Instagram Link</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="instagramLink" class="form-control instagram-link" name="instagramLink" value="<%= configuration.instagramLink %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="facebookLink" class="col-form-label">Facebook Link</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="facebookLink" class="form-control facebook-link" name="facebookLink" value="<%= configuration.facebookLink %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="spotifyLink" class="col-form-label">Spotify Link</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="spotifyLink" class="form-control spotify-link" name="spotifyLink" value="<%= configuration.spotifyLink %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+            <div class="col-2">
+              <label for="embedSpotify" class="col-form-label">Embed Spotify Link</label>
+            </div>
+            <span>:</span>
+            <div class="col-6">
+              <input type="text" id="embedSpotify" class="form-control embed-spotify" name="embedSpotifyLink" value="<%= configuration.embedSpotifyLink %>" aria-describedby="passwordHelpInline">
+            </div>
+          </div>
+          <div class="row g-3 mb-3">
+              <div class="col-2">
+                <label for="aboutMeDescription" class="col-form-label">About Me Description</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <textarea class="form-control about-me-description" name="aboutMeDescription" id="aboutMeDescription" cols="30" rows="10"><%= configuration.aboutMeDescription %></textarea>
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="footerQuote" class="col-form-label">Footer Quote</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="footerQuote" class="form-control footer-quote" name="footerQuote" value="<%= configuration.footerQuote %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+              <div class="col-2">
+                <label for="footerAuthor" class="col-form-label">Footer Quote Author</label>
+              </div>
+              <span>:</span>
+              <div class="col-6">
+                <input type="text" id="footerAuthor" class="form-control footer-author" name="footerAuthor" value="<%= configuration.footerAuthor %>" aria-describedby="passwordHelpInline">
+              </div>
+          </div>
+          <div class="form-footer">
+            <input type="hidden" class="id" name="id" value="<%= configuration._id %>">
+            <button type="submit" class="btn btn-primary px-5">Update</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

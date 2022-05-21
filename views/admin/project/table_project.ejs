@@ -1,0 +1,73 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <!-- Button trigger modal -->
+      <a class="btn btn-primary bg-dark" href="/admin/add-project">
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Year</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < project.length; i++) { %>
+              <tr>
+                <td><%= i + 1 %>.</td>
+                <td><%= project[i].year %></td>
+                <td><%= project[i].name %></td>
+                <td style="width: 40%;"><%= project[i].description %></td>
+                <td class="text-center">
+                  <img src="http://localhost:3000/<%- project[i].imageUrl %>" alt="imageUrl" width="100px">
+                </td>
+                <td>
+                  <form action="/admin/project/<%= project[i].id %>?_method=DELETE" method="POST">
+                    <a 
+                      href="/admin/project/<%= project[i]._id %>"
+                      class="btn btn-grey btn-circle btn-sm"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#exampleModal-<%= project[i]._id %>">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal-<%= project[i]._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure want to delete this?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

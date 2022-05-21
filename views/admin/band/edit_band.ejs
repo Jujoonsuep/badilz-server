@@ -1,0 +1,108 @@
+<div class="left-arrow mb-3">
+    <a href="/admin/band"><i class="fas fa-arrow-left"></i></a>
+</div>
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/band/<%= band.id %>?_method=PUT" method="POST" enctype="multipart/form-data" id="editBand">
+            <div class="form-group">
+                <label for="name">Name of Band :</label>
+                <input type="text" class="form-control" name="name" value="<%= band.name %>" placeholder="Enter Name of Band" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City :</label>
+                <input type="text" class="form-control" name="city" value="<%= band.city %>" placeholder="Enter City" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Intro Description :</label>
+                <textarea type="text" name="introduction" class="form-control" cols="30" rows="3" placeholder="Enter Intro Description" required><%= band.introduction %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">First Description :</label>
+                <textarea type="text" name="firstDescription" class="form-control" cols="30" rows="10" placeholder="Enter First Description" required><%= band.firstDescription %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Second Description :</label>
+                <textarea type="text" name="secondDescription" class="form-control" rows="10" placeholder="Enter Second Description" required><%= band.secondDescription %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Twitter Link :</label>
+                <input type="text" class="form-control" name="twitterLink" value="<%= band.twitterLink %>" placeholder="Enter Twitter Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Instagram Link :</label>
+                <input type="text" class="form-control" name="instagramLink" value="<%= band.instagramLink %>" placeholder="Enter Instagram Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Facebook Link :</label>
+                <input type="text" class="form-control" name="facebookLink" value="<%= band.facebookLink %>" placeholder="Enter Facebook Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Spotify Link :</label>
+                <input type="text" class="form-control" name="spotifyLink" value="<%= band.spotifyLink %>" placeholder="Enter Spotify Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Source Link :</label>
+                <input type="text" class="form-control" name="sourceLink" value="<%= band.sourceLink %>" placeholder="Enter Source Link" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Cover Image :</label>
+                <input type="file" class="form-control" name="image">
+                <small class="float-right">*Only can upload one image for cover</small>
+            </div>
+            <div class="form-group">
+                <label>Cover now :</label>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img src="http://localhost:3000/<%- band.coverUrl %>" alt="image-<%= band.id %>" style="width: 100%; height: 300px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gallery Status :</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="imageStatus" id="createImageBand" value="create">
+                        <label class="form-check-label" for="inlineRadio1">Create New</label>
+                    </div>
+                    <% if(band.imageId.length > 0) { %>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="imageStatus" id="addImageBand" value="add">
+                            <label class="form-check-label" for="enableImage">Add Image</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="imageStatus" id="removeImageBand" value="remove">
+                            <label class="form-check-label" for="enableImage">Remove All</label>
+                        </div>
+                    <% } %>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="imageStatus" value="none" id="disabledImageBand" checked>
+                        <label class="form-check-label" for="disabledImage">None</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Gallery :</label>
+                <input type="file" id="imageBtn" class="form-control" name="images" multiple disabled>
+            </div>
+            <% if(band.imageId.length > 0) { %>
+                <div class="form-group">
+                    <label>Gallery now :</label>
+                    <div class="container">
+                        <div class="row">
+                            <% for(let i = 0; i < band.imageId.length; i++) { %>
+                                <div class="col-sm-4">
+                                    <img src="http://localhost:3000/<%- band.imageId[i].imageUrl %>" alt="image-<%= band.id[i] %>" style="width: 100%; height: 300px; object-fit: cover;">
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

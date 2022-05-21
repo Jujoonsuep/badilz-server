@@ -1,0 +1,49 @@
+<%- include('../../partials/header.ejs') %>
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <%- include('../../partials/sidebar.ejs') %>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <%- include('../../partials/navbar.ejs') %>
+        
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <%- include('../../partials/alert.ejs') %>
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">Configurations UI</h1>
+
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active bg-dark" id="pills-home-tab" data-toggle="pill" href="#landing-page-form" role="tab" aria-controls="pills-home" aria-selected="true">Landing Page</a>
+            </li>
+            <!-- Place for adding new menu at below -->
+
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <% if(action === 'add') { %>
+              <%- include('add_configuration.ejs') %>
+            <% } else { %>
+              <%- include('edit_configuration.ejs') %>
+            <% } %>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <%- include('../../partials/logout.ejs') %>
+
+  <%- include('../../partials/footer.ejs') %>
+
+<%- include('../../partials/js.ejs') %>

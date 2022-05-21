@@ -1,0 +1,27 @@
+<div class="left-arrow mb-3">
+    <a href="/admin/portofolio/video"><i class="fas fa-arrow-left"></i></a>
+</div>
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/portofolio-video" method="POST">
+            <div class="form-group">
+                <label for="name">Title of Portofolio :</label>
+                <input type="text" class="form-control " name="name" placeholder="Enter Title of Portofolio" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year :</label>
+                <input type="number" class="form-control" name="year" placeholder="Enter Year" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Youtube Link :</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">https://www.youtube.com/watch?v=</span>
+                    <input type="text" class="form-control portofolio-youtube" name="youtubeLink" id="basic-url">
+                </div>
+            </div>
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="left-arrow mb-3">
+    <a href="/admin/journal"><i class="fas fa-arrow-left"></i></a>
+</div>
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/add-journal" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="journalQuote">Category :</label>
+                <select name="categoryId" class="form-control" aria-label=".form-select-sm example">
+                    <option selected disabled>-- Choose Category --</option>
+                    <% for(let i = 0; i < category.length; i++) { %>
+                        <option value="<%= category[i]._id%>"><%= category[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Title of Journal :</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter Title of Journal" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author :</label>
+                <input type="text" class="form-control" name="author" placeholder="Enter Author" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year :</label>
+                <input type="number" class="form-control" name="year" placeholder="Enter Year" required>
+            </div>
+            <div class="form-group">
+                <label for="journalContentFirst">Journal Quote :</label>
+                <textarea type="text" name="journalContentFirst" class="form-control" cols="30" rows="10" placeholder="Enter First Journal Content" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="journalContentSecond">Second Description :</label>
+                <textarea type="text" name="journalContentSecond" class="form-control" rows="10" placeholder="Enter Second Journal Content" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="journalQuote">Second Description :</label>
+                <textarea type="text" name="journalQuote" class="form-control" rows="10" placeholder="Enter Journal Quote" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Cover Image :</label>
+                <input type="file" class="form-control" name="image" required>
+                <small class="float-right">*Only can upload one image for cover</small>
+            </div>
+            <div class="form-group pb-3">
+                <label for="name">Gallery :</label>
+                <input type="file" class="form-control" name="images" multiple>
+                <small class="float-right">*Maximum 8 images, 1MB/image</small>
+            </div>
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

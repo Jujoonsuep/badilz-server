@@ -1,0 +1,104 @@
+<div class="left-arrow mb-3">
+    <a href="/admin/journal"><i class="fas fa-arrow-left"></i></a>
+</div>
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/journal/<%= journal._id %>?_method=PUT" id="editJournal" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="journalQuote">Category :</label>
+                <select name="categoryId" value="<%= journal.categoryId.id %>" class="form-control" aria-label=".form-select-sm example">
+                    <option disabled>-- Choose Category --</option>
+                    <% for(let i = 0; i < category.length; i++) { %>
+                        <% var selected = ( category[i]._id == journal.categoryId.id ) ? "selected" : ""; %>
+                        <option value="<%= category[i]._id %>" <%= selected %> ><%= category[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Title of Journal :</label>
+                <input type="text" class="form-control" name="title" value="<%= journal.title %>" placeholder="Enter Title of Journal" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author :</label>
+                <input type="text" class="form-control" name="author" value="<%= journal.author %>" placeholder="Enter Author" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year :</label>
+                <input type="number" class="form-control" name="year" value="<%= journal.year %>" placeholder="Enter Year" required>
+            </div>
+            <div class="form-group">
+                <label for="journalContentFirst">Journal Quote :</label>
+                <textarea type="text" name="journalContentFirst" class="form-control" cols="30" rows="10" placeholder="Enter First Journal Content" required><%= journal.journalContentFirst %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="journalContentSecond">Second Description :</label>
+                <textarea type="text" name="journalContentSecond" class="form-control" rows="10" placeholder="Enter Second Journal Content" required><%= journal.journalContentSecond %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="journalQuote">Second Description :</label>
+                <textarea type="text" name="journalQuote" class="form-control" rows="10" placeholder="Enter Journal Quote" required><%= journal.journalQuote %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Cover Image :</label>
+                <input type="file" class="form-control" name="image">
+                <small class="float-right">*Only can upload one image for cover</small>
+            </div>
+            <div class="form-group">
+                <label>Cover now :</label>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img src="http://localhost:3000/<%- journal.coverUrl %>" alt="image-<%= journal.id %>" style="width: 100%; height: 300px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gallery Status :</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="imageStatus" id="createImageJournal" value="create">
+                        <label class="form-check-label" for="inlineRadio1">Create New</label>
+                    </div>
+                    <% if(journal.imageId.length > 0) { %>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="imageStatus" id="addImageJournal" value="add">
+                            <label class="form-check-label" for="enableImage">Add Image</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="imageStatus" id="removeImageJournal" value="remove">
+                            <label class="form-check-label" for="enableImage">Remove All</label>
+                        </div>
+                    <% } %>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="imageStatus" value="none" id="disabledImageJournal" checked>
+                        <label class="form-check-label" for="disabledImage">None</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Gallery :</label>
+                <input type="file" id="imageBtnJournal" class="form-control" name="images" multiple disabled>
+            </div>
+            
+            <% if(journal.imageId.length > 0) { %>
+                <div class="form-group">
+                    <label>Gallery now :</label>
+                    <div class="container">
+                        <div class="row">
+                            <% for(let i = 0; i < journal.imageId.length; i++) { %>
+                                <div class="col-sm-4">
+                                    <img src="http://localhost:3000/<%- journal.imageId[i].imageUrl %>" alt="image-<%= journal.id[i] %>" style="width: 100%; height: 300px; object-fit: cover;">
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="left-arrow mb-3">
+    <a href="/admin/project"><i class="fas fa-arrow-left"></i></a>
+</div>
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/add-project" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Title of Project :</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Title of Project" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year :</label>
+                <input type="number" class="form-control" name="year" placeholder="Enter Year" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description :</label>
+                <textarea type="text" name="description" class="form-control" cols="30" rows="3" placeholder="Enter Description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Image :</label>
+                <input type="file" class="form-control" name="image" required>
+            </div>
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

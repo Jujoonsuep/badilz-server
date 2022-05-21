@@ -1,0 +1,54 @@
+<%- include('../../partials/header.ejs') %>
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <%- include('../../partials/sidebar.ejs') %>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <%- include('../../partials/navbar.ejs') %> 
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <%- include('../../partials/alert.ejs') %> 
+          
+          <% switch (action) {
+            case 'add' : %>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-4 text-gray-800">Add Project</h1>
+            <%- include('add_project.ejs') %>
+                    <% break;
+            
+            case 'view' : %>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-4 text-gray-800">Project</h1>
+            <%- include('table_project.ejs') %>
+                    <% break;
+            
+            case 'edit' : %>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-4 text-gray-800">Edit Project</h1>
+            <%- include('./edit_project') %> 
+                    <% break;         
+          } %>   
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <%- include('../../partials/logout.ejs') %>
+
+  <%- include('../../partials/footer.ejs') %>
+
+<%- include('../../partials/js.ejs') %>
+
+<script>
+</script>
