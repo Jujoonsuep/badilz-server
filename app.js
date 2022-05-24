@@ -9,7 +9,9 @@ const flash = require('connect-flash');
 
 // import mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/db_anggabadilz');
+mongoose.connect('mongodb+srv://jerridwip:badilzproject@cluster0.6emcd.mongodb.net/?retryWrites=true&w=majority');
+
+// mongodb+srv://jerridwip:badilzproject@cluster0.6emcd.mongodb.net/?retryWrites=true&w=majority
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

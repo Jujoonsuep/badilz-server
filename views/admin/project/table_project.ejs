@@ -27,7 +27,7 @@
                 <td><%= project[i].name %></td>
                 <td style="width: 40%;"><%= project[i].description %></td>
                 <td class="text-center">
-                  <img src="http://localhost:3000/<%- project[i].imageUrl %>" alt="imageUrl" width="100px">
+                  <img src="https://app-badilz.herokuapp.com/<%- project[i].imageUrl %>" alt="imageUrl" width="100px">
                 </td>
                 <td>
                   <form action="/admin/project/<%= project[i].id %>?_method=DELETE" method="POST">

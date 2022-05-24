@@ -18,13 +18,18 @@ module.exports = {
             const alertMessage = req.flash('alertMessage');
             const alertStatus = req.flash('alertStatus');
             const alert = {message: alertMessage, status: alertStatus};
-            if(req.session.user === null || req.session.user === undefined){
-                res.render('index', {
-                    title: "Badilz | Login" ,
-                    alert,
-                });
+            const user = await User.find();
+            if(user.length == 0) {
+                res.redirect('/admin/first-started')
             } else {
-                res.redirect('/admin/dashboard');
+                if(req.session.user === null || req.session.user === undefined){
+                    res.render('index', {
+                        title: "Badilz | Login" ,
+                        alert,
+                    });
+                } else {
+                    res.redirect('/admin/dashboard');
+                }
             }
             
         } catch (error) {
@@ -64,6 +69,62 @@ module.exports = {
         req.session.destroy();
         res.redirect('/admin/signin');
     },
+
+    firstStarted : async (req, res) => {
+        const user = await User.find();
+        const alertMessage = req.flash('alertMessage');
+        const alertStatus = req.flash('alertStatus');
+        const alert = {message: alertMessage, status: alertStatus};
+        if(req.session.user === null || req.session.user === undefined){
+            if(user.length == 0) {
+                res.render('admin/first/view_started', {
+                    title: "Badilz | First" ,
+                    alert,
+                });
+            } else {
+                res.redirect('/admin/singin');
+            }
+        } else {
+            res.redirect('/admin/dashboard');
+        }
+    },
+
+    createFirst : async (req, res) => {
+        try {
+             const {username, password, auth} = req.body;
+             const dbUsername = await User.findOne({ username : username });
+             if(username.length < 4) {
+                 req.flash('alertMessage', 'Make sure the username more than three characters');
+                 req.flash('alertStatus', 'danger');
+                 res.redirect('/admin/add-user');
+             }
+ 
+             if(auth == "badilzproject") {
+                if(dbUsername === null) {
+                    await User.create({
+                        username,
+                        password
+                    });
+                    req.flash('alertMessage', 'Success Add');
+                    req.flash('alertStatus', 'success');
+                    res.redirect('/admin/singin');
+                } else {
+                    req.flash('alertMessage', 'Username already taken');
+                    req.flash('alertStatus', 'danger');
+                    res.redirect('/admin/first-started');
+                }
+             } else {
+                req.flash('alertMessage', 'WARNING : restricted, permission needed');
+                req.flash('alertStatus', 'danger');
+                res.redirect('/admin/first-started');
+             }
+             
+        } catch (error) {
+             req.flash('alertMessage', `${error.message}`);
+             req.flash('alertStatus', 'danger')
+             res.redirect('/admin/first-started');
+        }
+     },
     
     viewDashboard : async (req, res) => {
         try {
@@ -75,7 +136,6 @@ module.exports = {
             const category = await Category.find();
             const journal = await Journal.find();
             const porto = portoimage.length + portovideo.length;
-            console.log(user);
             res.render('admin/dashboard/view_dashboard', {
                 band: band.length,
                 admin: user.length,

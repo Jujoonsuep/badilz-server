@@ -54,7 +54,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="http://localhost:3000/<%- band.coverUrl %>" alt="image-<%= band.id %>" style="width: 100%; height: 300px; object-fit: cover;">
+                            <img src="https://app-badilz.herokuapp.com/<%- band.coverUrl %>" alt="image-<%= band.id %>" style="width: 100%; height: 300px; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                         <div class="row">
                             <% for(let i = 0; i < band.imageId.length; i++) { %>
                                 <div class="col-sm-4">
-                                    <img src="http://localhost:3000/<%- band.imageId[i].imageUrl %>" alt="image-<%= band.id[i] %>" style="width: 100%; height: 300px; object-fit: cover;">
+                                    <img src="https://app-badilz.herokuapp.com/<%- band.imageId[i].imageUrl %>" alt="image-<%= band.id[i] %>" style="width: 100%; height: 300px; object-fit: cover;">
                                 </div>
                             <% } %>
                         </div>

@@ -5,6 +5,8 @@ const auth = require('../middlewares/auth');
 
 router.get('/signin', adminController.viewLogin);
 router.post('/signin', adminController.actionLogin);
+router.get('/first-started', adminController.firstStarted);
+router.post('/createFirst', adminController.createFirst);
 router.use(auth);
 router.post('/logout', adminController.actionLogout);
 router.post('/create', adminController.createAcccount);

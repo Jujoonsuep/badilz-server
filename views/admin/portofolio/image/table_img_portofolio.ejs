@@ -27,7 +27,7 @@
                     <td><%= image[i].year %></td>
                     <td><%= image[i].name %></td>
                     <td class="text-center">
-                      <img src="http://localhost:3000/<%- image[i].imageUrl %>" alt="imageUrl" width="100px">
+                      <img src="https://app-badilz.herokuapp.com/<%- image[i].imageUrl %>" alt="imageUrl" width="100px">
                     </td>
                     <td>
                       <form action="/admin/portofolio-image/<%= image[i].id %>?_method=DELETE" method="POST">
