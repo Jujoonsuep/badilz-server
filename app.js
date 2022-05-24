@@ -4,7 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override');
-const session = require('cookie-session');
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session)
 const flash = require('connect-flash');
 
 // import mongoose
@@ -29,6 +30,9 @@ app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(session({
   secret: 'keyboard cat',
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
   resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 900000 }
