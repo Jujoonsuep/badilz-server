@@ -16,7 +16,6 @@ const journalSchema = new mongoose.Schema({
     },
     journalQuote : {
         type : String,
-        required : true
     },
     journalContentFirst : {
         type : String,
